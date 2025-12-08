@@ -1,0 +1,46 @@
+experiment_name: llm-lora-demo
+seed: 42
+
+model_name_or_path: microsoft/phi-3-mini-4k-instruct
+tokenizer_name_or_path: microsoft/phi-3-mini-4k-instruct
+
+dataset:
+  raw_path: data/raw/sample_dataset.jsonl
+  processed_dir: data/processed
+  task: instruction-following
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+training:
+  output_dir: outputs/checkpoints
+  adapter_dir: outputs/adapters
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 2
+  learning_rate: 2e-4
+  weight_decay: 0.0
+  num_train_epochs: 3
+  logging_steps: 50
+  save_steps: 500
+  eval_steps: 200
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules: ['q_proj', 'v_proj']
+  bias: 'none'
+
+quant:
+  enabled: false
+  load_in_4bit: false
+  double_quant: false
+  quant_type: 'nf4'
+
+monitoring:
+  use_wandb: false
+  wandb_project: llm-lora-demo
+
+max_length: 2048
+eval_max_new_tokens: 200
