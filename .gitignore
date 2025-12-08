@@ -1,0 +1,20 @@
+# Python / env
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Data & outputs
+data/processed/
+outputs/
+logs/
+runs/
+*.ckpt
+*.pt
+*.safetensors
+
+# notebooks
+.ipynb_checkpoints/
+
+# system
+.DS_Store
