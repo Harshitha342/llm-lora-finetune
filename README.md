@@ -69,3 +69,8 @@ adapters_for_submission.zip
 
 Uploaded to HuggingFace model hub.
 
+Author
+Arlapalli Harshitha
+23A91A0573
+
+
